@@ -1,0 +1,1 @@
+The provided web content is not relevant to the query "Explain renewable energy technologies and recent advancements." The content displays a 404 error, indicating that the requested page was not found on the server. The page provides a navigation menu for the International Renewable Energy Agency (IRENA) website, but the main body states "We could not find that page".

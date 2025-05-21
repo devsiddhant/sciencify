@@ -1,0 +1,1 @@
+The provided web content indicates a "404 Not Found" error. The page is explicitly stating that the requested content either does not exist or has been moved. Therefore, the content is completely unrelated to the query "Explain black holes, event horizons, and recent research" because no actual scientific information is present.

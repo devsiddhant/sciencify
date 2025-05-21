@@ -1,0 +1,1 @@
+The provided web content is a "Page Not Found" (404 error) from NASA's website. The content itself is not directly related to the query "Explain black holes, event horizons, and recent research" because the requested page could not be found.
