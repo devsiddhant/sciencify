@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Neural Networks - Sciencify</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+</head>
+<body class="light-mode">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">Sciencify</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../content.html">Content</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="mailto:siddhantadhikari@proton.me" class="contact-btn">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-page">
+        <article class="article-content">
+            <div class="article-header">
+                <span class="article-category">Computer Science</span>
+                <h1>The Architecture of Neural Networks</h1>
+                <div class="article-meta">
+                    <span class="article-date">May 20, 2024</span>
+                    <span class="article-reading-time">14 min read</span>
+                </div>
+            </div>
+
+            <div class="article-image-full">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Neural network visualization">
+            </div>
+
+            <div class="article-body">
+                <h2>Introduction to Neural Networks</h2>
+                <p>Neural networks represent one of the most powerful and versatile approaches in artificial intelligence. Inspired by the structure and function of the human brain, these computational models have revolutionized fields ranging from computer vision and natural language processing to game playing and scientific discovery.</p>
+
+                <p>At their core, neural networks are mathematical models designed to recognize patterns. They interpret sensory data through a kind of machine perception, labeling or clustering raw input. The patterns they recognize are numerical, contained in vectors, into which all real-world data, be it images, sound, text, or time series, must be translated.</p>
+
+                <h2>Biological Inspiration</h2>
+                <p>To understand neural networks, it helps to first understand their biological inspiration. The human brain consists of approximately 86 billion neurons, each connected to thousands of other neurons through structures called synapses. When a neuron receives sufficient input from other neurons, it "fires," sending an electrical signal down its axon to other neurons.</p>
+
+                <p>Artificial neural networks mimic this structure in a simplified way:</p>
+                <ul>
+                    <li><strong>Neurons</strong> become nodes or units that perform simple computations</li>
+                    <li><strong>Synapses</strong> become weighted connections between these nodes</li>
+                    <li><strong>Neural firing</strong> becomes an activation function that determines the output of a node</li>
+                </ul>
+
+                <p>While this analogy helps conceptualize neural networks, modern deep learning has evolved far beyond simple biological mimicry. Today's neural networks incorporate architectural innovations and mathematical techniques that have no direct biological counterparts.</p>
+
+                <h2>The Basic Building Block: The Artificial Neuron</h2>
+                <p>The fundamental unit of a neural network is the artificial neuron, also called a node or unit. Each artificial neuron performs a simple computation:</p>
+
+                <ol>
+                    <li>It receives input from other neurons or from external sources</li>
+                    <li>It applies weights to these inputs, emphasizing some and de-emphasizing others</li>
+                    <li>It sums these weighted inputs</li>
+                    <li>It applies an activation function to this sum to produce an output</li>
+                </ol>
+
+                <p>Mathematically, the output of a neuron can be expressed as:</p>
+                <div class="math-formula">
+                    y = f\left(\sum_{i=1}^{n} w_i x_i + b\right)
+                </div>
+
+                <p>where:</p>
+                <ul>
+                    <li>$$y$$ is the output</li>
+                    <li>$$f$$ is the activation function</li>
+                    <li>$$w_i$$ are the weights</li>
+                    <li>$$x_i$$ are the inputs</li>
+                    <li>$$b$$ is the bias term</li>
+                </ul>
+
+                <div class="article-image-side">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Artificial neuron diagram">
+                    <p class="image-caption">A simplified representation of an artificial neuron with inputs, weights, and an activation function.</p>
+                </div>
+
+                <h3>Activation Functions</h3>
+                <p>The activation function introduces non-linearity into the network, allowing it to learn complex patterns. Common activation functions include:</p>
+
+                <ul>
+                    <li><strong>Sigmoid:</strong> $$f(x) = \frac{1}{1 + e^{-x}}$$ - Maps input to a value between 0 and 1</li>
+                    <li><strong>Hyperbolic Tangent (tanh):</strong> $$f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$ - Maps input to a value between -1 and 1</li>
+                    <li><strong>Rectified Linear Unit (ReLU):</strong> $$f(x) = \max(0, x)$$ - Returns 0 for negative inputs and x for positive inputs</li>
+                    <li><strong>Leaky ReLU:</strong> $$f(x) = \max(\alpha x, x)$$ where $$\alpha$$ is a small constant - Addresses the "dying ReLU" problem</li>
+                    <li><strong>Softmax:</strong> $$f(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}$$ - Used in the output layer for multi-class classification</li>
+                </ul>
+
+                <p>The choice of activation function significantly impacts a network's learning dynamics and performance. Modern networks predominantly use ReLU and its variants due to their computational efficiency and effectiveness in mitigating the vanishing gradient problem.</p>
+
+                <h2>Network Architectures</h2>
+                <p>Neural networks come in various architectures, each designed for specific types of problems. Here are the most common types:</p>
+
+                <h3>Feedforward Neural Networks (FNN)</h3>
+                <p>The simplest type of neural network, where information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes. There are no cycles or loops in the network.</p>
+
+                <p>A typical feedforward network consists of:</p>
+                <ul>
+                    <li><strong>Input Layer:</strong> Receives the raw input data</li>
+                    <li><strong>Hidden Layers:</strong> Intermediate layers that perform computations and feature extraction</li>
+                    <li><strong>Output Layer:</strong> Produces the final prediction or classification</li>
+                </ul>
+
+                <p>The term "deep" in deep learning refers to networks with multiple hidden layers. Each additional layer allows the network to learn more abstract and complex features from the data.</p>
+
+                <h3>Convolutional Neural Networks (CNN)</h3>
+                <p>CNNs are specialized for processing grid-like data such as images. They use convolutional layers that apply filters to local regions of the input, capturing spatial dependencies. Key components include:</p>
+
+                <ul>
+                    <li><strong>Convolutional Layers:</strong> Apply filters to detect features like edges, textures, and patterns</li>
+                    <li><strong>Pooling Layers:</strong> Reduce spatial dimensions while preserving important features</li>
+                    <li><strong>Fully Connected Layers:</strong> Combine features for final classification or regression</li>
+                </ul>
+
+                <p>CNNs have revolutionized computer vision, enabling breakthroughs in image classification, object detection, and facial recognition.</p>
+
+                <div class="article-callout">
+                    <h4>Key Insight</h4>
+                    <p>The power of CNNs comes from their ability to learn hierarchical features. Early layers detect simple features like edges and corners, while deeper layers combine these to recognize complex objects and scenes.</p>
+                </div>
+
+                <h3>Recurrent Neural Networks (RNN)</h3>
+                <p>RNNs are designed for sequential data, where the order of inputs matters. Unlike feedforward networks, RNNs have connections that form cycles, allowing information to persist from one step to the next. This creates a form of memory that makes them suitable for tasks like:</p>
+
+                <ul>
+                    <li>Natural language processing</li>
+                    <li>Speech recognition</li>
+                    <li>Time series prediction</li>
+                    <li>Machine translation</li>
+                </ul>
+
+                <p>However, basic RNNs suffer from the vanishing gradient problem, making it difficult to learn long-term dependencies. This led to the development of more sophisticated architectures:</p>
+
+                <h4>Long Short-Term Memory (LSTM)</h4>
+                <p>LSTMs introduce a memory cell with gates that control the flow of information:</p>
+                <ul>
+                    <li><strong>Forget Gate:</strong> Decides what information to discard from the cell state</li>
+                    <li><strong>Input Gate:</strong> Updates the cell state with new information</li>
+                    <li><strong>Output Gate:</strong> Determines the output based on the cell state</li>
+                </ul>
+
+                <h4>Gated Recurrent Unit (GRU)</h4>
+                <p>A simplified version of LSTM with fewer parameters, combining the forget and input gates into a single "update gate."</p>
+
+                <h3>Transformer Networks</h3>
+                <p>Introduced in 2017 with the paper "Attention Is All You Need," transformers have largely replaced RNNs for many sequence tasks. They rely on a mechanism called self-attention to weigh the importance of different parts of the input sequence.</p>
+
+                <p>Key advantages of transformers include:</p>
+                <ul>
+                    <li>Parallel processing of sequence elements (unlike RNNs, which process sequentially)</li>
+                    <li>Better handling of long-range dependencies</li>
+                    <li>More efficient training on large datasets</li>
+                </ul>
+
+                <p>Transformers power state-of-the-art language models like GPT (Generative Pre-trained Transformer) and BERT (Bidirectional Encoder Representations from Transformers).</p>
+
+                <h3>Generative Adversarial Networks (GAN)</h3>
+                <p>GANs consist of two neural networks that compete against each other:</p>
+                <ul>
+                    <li><strong>Generator:</strong> Creates synthetic data samples</li>
+                    <li><strong>Discriminator:</strong> Distinguishes between real and synthetic samples</li>
+                </ul>
+
+                <p>Through this adversarial process, the generator learns to produce increasingly realistic data. GANs have enabled remarkable advances in image generation, style transfer, and data augmentation.</p>
+
+                <h2>Training Neural Networks</h2>
+                <p>The power of neural networks lies in their ability to learn from data. Training a neural network involves:</p>
+
+                <h3>Forward Propagation</h3>
+                <p>During forward propagation, input data passes through the network layer by layer, with each neuron applying its weights, bias, and activation function to produce an output. The final output is compared to the desired output (the ground truth) to calculate an error or loss.</p>
+
+                <h3>Loss Functions</h3>
+                <p>Loss functions quantify how well the network's predictions match the ground truth. Common loss functions include:</p>
+                <ul>
+                    <li><strong>Mean Squared Error (MSE):</strong> For regression problems</li>
+                    <li><strong>Cross-Entropy Loss:</strong> For classification problems</li>
+                    <li><strong>Kullback-Leibler Divergence:</strong> For comparing probability distributions</li>
+                </ul>
+
+                <h3>Backpropagation</h3>
+                <p>Backpropagation is the algorithm that calculates how much each weight contributed to the error. It works by computing the gradient of the loss function with respect to each weight, propagating these gradients backward through the network.</p>
+
+                <h3>Optimization Algorithms</h3>
+                <p>Once the gradients are calculated, an optimization algorithm updates the weights to reduce the error. Popular optimization algorithms include:</p>
+                <ul>
+                    <li><strong>Stochastic Gradient Descent (SGD):</strong> Updates weights based on the gradient of a single training example or mini-batch</li>
+                    <li><strong>Adam:</strong> Combines the benefits of AdaGrad and RMSProp, adapting the learning rate for each parameter</li>
+                    <li><strong>RMSProp:</strong> Divides the learning rate by an exponentially decaying average of squared gradients</li>
+                </ul>
+
+                <div class="article-callout warning">
+                    <h4>Training Challenges</h4>
+                    <p>Neural networks face several challenges during training, including vanishing/exploding gradients, overfitting, and getting stuck in local minima. Techniques like batch normalization, dropout, and careful weight initialization help address these issues.</p>
+                </div>
+
+                <h2>Advanced Concepts</h2>
+                <p>Modern neural networks incorporate numerous advanced techniques to improve performance and efficiency:</p>
+
+                <h3>Transfer Learning</h3>
+                <p>Instead of training a network from scratch, transfer learning leverages pre-trained models on large datasets. The pre-trained network is then fine-tuned on a specific task, requiring less data and computational resources.</p>
+
+                <h3>Attention Mechanisms</h3>
+                <p>Attention allows a model to focus on relevant parts of the input when making predictions. It has been crucial for advances in machine translation, image captioning, and other tasks requiring alignment between different modalities.</p>
+
+                <h3>Neural Architecture Search (NAS)</h3>
+                <p>NAS automates the design of neural network architectures, using techniques like reinforcement learning or evolutionary algorithms to discover optimal network structures for specific tasks.</p>
+
+                <h2>Applications of Neural Networks</h2>
+                <p>Neural networks have transformed numerous fields:</p>
+
+                <h3>Computer Vision</h3>
+                <ul>
+                    <li>Image classification and object detection</li>
+                    <li>Facial recognition and emotion detection</li>
+                    <li>Medical image analysis</li>
+                    <li>Autonomous driving</li>
+                </ul>
+
+                <h3>Natural Language Processing</h3>
+                <ul>
+                    <li>Machine translation</li>
+                    <li>Sentiment analysis</li>
+                    <li>Text generation and summarization</li>
+                    <li>Question answering systems</li>
+                </ul>
+
+                <h3>Speech and Audio</h3>
+                <ul>
+                    <li>Speech recognition and synthesis</li>
+                    <li>Music generation</li>
+                    <li>Audio classification</li>
+                </ul>
+
+                <h3>Science and Medicine</h3>
+                <ul>
+                    <li>Drug discovery</li>
+                    <li>Protein folding prediction</li>
+                    <li>Climate modeling</li>
+                    <li>Disease diagnosis</li>
+                </ul>
+
+                <h2>Ethical Considerations</h2>
+                <p>As neural networks become increasingly powerful and pervasive, they raise important ethical questions:</p>
+
+                <ul>
+                    <li><strong>Bias and Fairness:</strong> Neural networks can perpetuate or amplify biases present in their training data</li>
+                    <li><strong>Privacy:</strong> Deep learning models may memorize sensitive information from training data</li>
+                    <li><strong>Transparency:</strong> The "black box" nature of complex neural networks makes their decisions difficult to interpret</li>
+                    <li><strong>Environmental Impact:</strong> Training large neural networks requires significant computational resources and energy</li>
+                </ul>
+
+                <p>Addressing these concerns requires interdisciplinary collaboration between technologists, ethicists, policymakers, and other stakeholders.</p>
+
+                <h2>The Future of Neural Networks</h2>
+                <p>Neural network research continues to advance rapidly. Promising directions include:</p>
+
+                <ul>
+                    <li><strong>Neuro-symbolic AI:</strong> Combining neural networks with symbolic reasoning for better interpretability and generalization</li>
+                    <li><strong>Energy-efficient architectures:</strong> Developing models that require less computational resources</li>
+                    <li><strong>Multimodal learning:</strong> Creating systems that can seamlessly integrate information across different modalities (text, image, audio, etc.)</li>
+                    <li><strong>Self-supervised learning:</strong> Reducing dependence on labeled data by learning from the structure of unlabeled data</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Neural networks represent one of the most significant technological advances of our time. From their humble beginnings as simplified models of biological neurons, they have evolved into sophisticated architectures capable of solving complex problems across numerous domains.</p>
+
+                <p>As research continues and computational resources grow, neural networks will likely become even more powerful and ubiquitous, further transforming how we interact with technology and understand the world.</p>
+
+                <div class="article-references">
+                    <h3>Further Reading</h3>
+                    <ul>
+                        <li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). "Deep Learning". MIT Press.</li>
+                        <li>LeCun, Y., Bengio, Y., & Hinton, G. (2015). "Deep learning". Nature, 521(7553), 436-444.</li>
+                        <li>Vaswani, A., et al. (2017). "Attention is all you need". Advances in Neural Information Processing Systems.</li>
+                        <li>Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). "ImageNet classification with deep convolutional neural networks". Advances in Neural Information Processing Systems.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="article-tags">
+                <span class="tag">Neural Networks</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">AI</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Computer Science</span>
+            </div>
+
+            <div class="article-share">
+                <h3>Share this article</h3>
+                <div class="share-buttons">
+                    <a href="#" class="share-button twitter" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-button facebook" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-button linkedin" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="share-button email" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </article>
+
+        <aside class="article-sidebar">
+            <div class="sidebar-section table-of-contents">
+                <h3>Table of Contents</h3>
+                <ul id="toc">
+                    <li><a href="#introduction-to-neural-networks">Introduction to Neural Networks</a></li>
+                    <li><a href="#biological-inspiration">Biological Inspiration</a></li>
+                    <li><a href="#the-basic-building-block-the-artificial-neuron">The Basic Building Block: The Artificial Neuron</a></li>
+                    <li><a href="#network-architectures">Network Architectures</a></li>
+                    <li><a href="#training-neural-networks">Training Neural Networks</a></li>
+                    <li><a href="#advanced-concepts">Advanced Concepts</a></li>
+                    <li><a href="#applications-of-neural-networks">Applications of Neural Networks</a></li>
+                    <li><a href="#ethical-considerations">Ethical Considerations</a></li>
+                    <li><a href="#the-future-of-neural-networks">The Future of Neural Networks</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section related-articles">
+                <h3>Related Articles</h3>
+                <div class="related-article">
+                    <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Machine Learning">
+                    <div>
+                        <h4>Machine Learning Algorithms Explained</h4>
+                        <a href="machine-learning.html" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="related-article">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Quantum Computing">
+                    <div>
+                        <h4>Quantum Algorithms and Their Applications</h4>
+                        <a href="quantum-computing.html" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Sciencify</h2>
+                <p>Exploring the frontiers of scientific knowledge</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../content.html">Content</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="mailto:siddhantadhikari@proton.me">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://github.com/devsiddhant" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://techhub.social/@curious" target="_blank" aria-label="Mastodon"><i class="fab fa-mastodon"></i></a>
+                    <a href="mailto:siddhantadhikari@proton.me" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Sciencify. Made with <i class="fas fa-heart"></i> by <a href="https://github.com/devsiddhant" target="_blank">@devsiddhant</a> on GitHub</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add IDs to headings for TOC
+            const articleBody = document.querySelector('.article-body');
+            const headings = articleBody.querySelectorAll('h2, h3');
+            
+            headings.forEach(heading => {
+                const id = heading.textContent.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+                heading.id = id;
+            });
+            
+            // Highlight current section in TOC
+            const tocLinks = document.querySelectorAll('#toc a');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        tocLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            headings.forEach(heading => {
+                observer.observe(heading);
+            });
+            
+            // Render math formulas
+            document.querySelectorAll('.math-formula').forEach(element => {
+                const formula = element.textContent.trim();
+                katex.render(formula, element, {
+                    throwOnError: false,
+                    displayMode: true
+                });
+            });
+        });
+    </script>
+</body>
+</html>
