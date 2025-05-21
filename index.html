@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciencify - Exploring the Frontiers of Scientific Knowledge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Sciencify</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="content.html">Content</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="mailto:siddhantadhikari@proton.me" class="contact-btn">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content fade-in">
+                <h1>Exploring the Frontiers of Scientific Knowledge</h1>
+                <p>Discover in-depth articles on cutting-edge scientific topics, from quantum physics to neural networks, explained with clarity and precision.</p>
+                <div class="hero-buttons">
+                    <a href="content.html" class="btn primary-btn">Explore Articles</a>
+                    <a href="about.html" class="btn secondary-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Abstract scientific visualization">
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="section-header fade-in">
+                <h2>Why Sciencify?</h2>
+                <p>Our mission is to make complex scientific concepts accessible to everyone</p>
+            </div>
+            <div class="features-grid container">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Accurate Information</h3>
+                    <p>All our articles are based on peer-reviewed research and verified scientific knowledge.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Clear Explanations</h3>
+                    <p>We explain complex concepts in clear, jargon-free language without oversimplifying.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Diverse Topics</h3>
+                    <p>From quantum physics to neural networks, we cover a wide range of scientific disciplines.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="latest-articles">
+            <div class="section-header fade-in">
+                <h2>Latest Articles</h2>
+                <p>Explore our most recent in-depth articles on various scientific topics</p>
+            </div>
+            <div class="articles-grid container">
+                <article class="article-card fade-in delay-1">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Quantum Computing">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Physics</span>
+                        <h3>Quantum Computing: The Next Frontier</h3>
+                        <p>Explore how quantum computers are revolutionizing computation by harnessing quantum mechanical phenomena.</p>
+                        <a href="articles/quantum-computing.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="article-card fade-in delay-2">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Neural Networks">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Computer Science</span>
+                        <h3>The Architecture of Neural Networks</h3>
+                        <p>Dive into the structure and function of artificial neural networks and how they mimic the human brain.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="article-card fade-in delay-3">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Black Holes">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Astronomy</span>
+                        <h3>Black Holes: The Most Mysterious Objects in the Universe</h3>
+                        <p>Delve into the physics of these cosmic phenomena and recent breakthroughs in their study.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div class="container" style="text-align: center; margin-top: var(--spacing-xl);">
+                <a href="content.html" class="btn primary-btn">View All Articles</a>
+            </div>
+        </section>
+
+        <section class="cta-section fade-in">
+            <div class="cta-content">
+                <h2>Join Our Scientific Journey</h2>
+                <p>Have questions, suggestions, or want to collaborate? We'd love to hear from you!</p>
+                <a href="mailto:siddhantadhikari@proton.me" class="btn">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Sciencify</h2>
+                <p>Exploring the frontiers of scientific knowledge</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="content.html">Content</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="mailto:siddhantadhikari@proton.me">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://github.com/devsiddhant" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://techhub.social/@curious" target="_blank" aria-label="Mastodon"><i class="fab fa-mastodon"></i></a>
+                    <a href="mailto:siddhantadhikari@proton.me" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Sciencify. Made with <i class="fas fa-heart"></i> by <a href="https://github.com/devsiddhant" target="_blank">@devsiddhant</a> on GitHub</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

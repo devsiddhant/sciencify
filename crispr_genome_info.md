@@ -1,1 +1,0 @@
-The provided web content displays a "404 - Page Not Found" error. This indicates that the requested page or resource is unavailable. Therefore, the content does not contain any information related to "Explain CRISPR gene editing technology, its applications, and recent developments."
